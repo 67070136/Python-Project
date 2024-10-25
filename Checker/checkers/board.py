@@ -9,7 +9,7 @@ class Board:
         self.red_left = self.white_left = 12
         self.red_king = self.white_king = 0
     
-    def draw_squares(self, win):
+    def draw_squares(self, win): #กำหนดขนาดช่องสี่เหลี่ยม
         win.fill(BLACK)
         for row in range(ROWS):
             for col in range(row % 2, ROWS, 2):

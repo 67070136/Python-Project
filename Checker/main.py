@@ -5,8 +5,8 @@ from checkers.board import Board
 
 FPS = 60 #ปรับfpsสูงสุดได้
 
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Checkers')
+WIN = pygame.display.set_mode((WIDTH, HEIGHT)) #ขนาดgame window
+pygame.display.set_caption('Checkers') #ชื่อเวลาเปิดwindow
 
 def main():
     run = True
