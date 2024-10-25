@@ -1,4 +1,4 @@
-เพื่อที่จะrunได้:
+เพื่อที่จะrun gameได้:
 
 pip3 install -r requirements.txt
 
