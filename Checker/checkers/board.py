@@ -73,7 +73,7 @@ class Board:
 
             current = self.board.get_piece(r, left)
             if current == 0:
-                if skip_only and not last:
+                if skipped and not last:
                     break
             left -= 1
 
