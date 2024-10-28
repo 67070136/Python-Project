@@ -6,7 +6,6 @@ from .piece import Piece
 class Board:
     def __init__(self):
         self.board = []
-        self.selected_piece = None
         self.red_left = self.white_left = 12
         self.red_kings = self.white_kings = 0
         self.create_board()
@@ -52,3 +51,31 @@ class Board:
                 piece = self.board[row][col]
                 if piece != 0:
                     piece.draw(win)
+
+    def get_valid_moves(self, piece):# กำหนด dictionary สำหรับเก็บตำแหน่งการเดินที่ถูกต้องทั้งหมดของตัวหมาก
+        moves = {}
+        (4, 5) = [(3, 4)]
+        left = piece.col - 1
+        right = piece.col + 1
+        row = piece.row
+
+        if piece.color == RED or piece.king: # ตรวจสอบว่าตัวหมากเป็นสีแดงหรือเป็นตัวคิง (ตัวคิงสามารถเดินได้ทั้งสองทิศทาง)
+            pass
+        if piece.color == WHITE or piece.king:# ตรวจสอบว่าตัวหมากเป็นสีขาวหรือเป็นตัวคิง
+            pass
+    
+    def _traverse_left(self, start, stop, step, color, left, skipped=[]):# กำหนด dictionary สำหรับเก็บตำแหน่งที่สามารถเดินได้ในทิศทางซ้าย
+        move = {} # กำหนด dictionary สำหรับเก็บตำแหน่งที่สามารถเดินได้ในทิศทางซ้าย
+        last = []# สร้าง list สำหรับเก็บหมากที่อาจจะถูกข้าม (หรือถูกกิน)
+        for r in range(start, stop, step):
+            if left < 0:
+                break
+
+            current = self.board.get_piece(r, left)
+            if current == 0:
+                if skip_only and not last:
+                    break
+            left -= 1
+
+    def __traverse_right(self, start, stop, step, color, left, skipped=[]):# ตำแหน่งนี้สำหรับเขียนโค้ดการหาทางเดินในทิศทางขวา
+        pass
