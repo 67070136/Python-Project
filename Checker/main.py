@@ -1,6 +1,6 @@
 """mainในการเชื่อมcodeเข้าหากัน"""
 import pygame
-from checkers .constants import WIDTH, HEIGHT, SQUARE_SIZE
+from checkers .constants import WIDTH, HEIGHT, SQUARE_SIZE, RED
 from checkers.game import Game
 
 FPS = 60 #ปรับfpsสูงสุดได้
@@ -22,6 +22,10 @@ def main():
     while run:
         clock.tick(FPS)
 
+        if game.winner() != None:
+            print(game.winner())
+            run = False
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -29,7 +33,8 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 row, col = get_row_col_from_mouse(pos)
-    
+                game.select(row, col)
+
         game.update()
 
     pygame.quit()
