@@ -63,10 +63,10 @@ class Board:
 
     def winner(self):
         if self.red_left <= 0:
-            return WHITE
+            return "WHITE"
         elif self.white_left <= 0:
-            return RED
-        
+            return "RED"
+
         return None
     
     def get_valid_moves(self, piece):# กำหนด dictionary สำหรับเก็บตำแหน่งการเดินที่ถูกต้องทั้งหมดของตัวหมาก

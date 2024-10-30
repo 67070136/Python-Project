@@ -3,10 +3,17 @@ import pygame
 from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE, RED
 from checkers.game import Game
 
-# Initialize Pygame
 pygame.init()
 
 FPS = 60  # ปรับfpsสูงสุดได้
+
+WHITE_WIN_IMG = pygame.image.load('assets/white_win.png')
+WHITE_WIN_IMG = pygame.transform.scale(WHITE_WIN_IMG, (400, 400))
+WHITE_WIN_rect = WHITE_WIN_IMG.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+
+RED_WIN_IMG = pygame.image.load('assets/red_win.png')
+RED_WIN_IMG = pygame.transform.scale(RED_WIN_IMG, (400, 400))
+RED_WIN_rect = RED_WIN_IMG.get_rect(center=(WIDTH // 2, HEIGHT // 2))
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))  # ขนาดgame window
 pygame.display.set_caption('Checkers')  # ชื่อเวลาเปิดwindow
@@ -50,18 +57,30 @@ def main():
     clock = pygame.time.Clock()
     game = Game(WIN)
 
-    # Show the start screen and wait for the user to click start
     if not start_screen():
-        return  # Exit if the window is closed
+        return
 
     run = True
     while run:
         clock.tick(FPS)
 
-        # Game loop
-        if game.winner() is not None:
-            print(game.winner())
-            run = False
+        winner = game.winner()
+        if winner is not None:
+            if winner == "WHITE":  # Check against string identifiers
+                WIN.blit(WHITE_WIN_IMG, WHITE_WIN_rect)
+            elif winner == "RED":  # Check against string identifiers
+                WIN.blit(RED_WIN_IMG, RED_WIN_rect)
+            print(winner)
+            
+            pygame.display.update()
+
+            # Wait for user input to close the game after showing the winner
+            waiting = True
+            while waiting:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        waiting = False
+            run = False  # Exit the main loop after user closes or presses a key
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
