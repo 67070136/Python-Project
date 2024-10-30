@@ -17,6 +17,8 @@ RED_WIN_rect = RED_WIN_IMG.get_rect(center=(WIDTH // 2, HEIGHT // 2))
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))  # ขนาดgame window
 pygame.display.set_caption('Checkers')  # ชื่อเวลาเปิดwindow
+icon = pygame.image.load('assets/logo.png')
+pygame.display.set_icon(icon)
 
 # Load the PNG start button image
 start_button_image = pygame.image.load('assets/start_button.png')  # Replace with the actual image path
