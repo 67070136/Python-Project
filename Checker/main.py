@@ -8,11 +8,11 @@ pygame.init()
 FPS = 60  # ปรับfpsสูงสุดได้
 
 WHITE_WIN_IMG = pygame.image.load('assets/white_win.png')
-WHITE_WIN_IMG = pygame.transform.scale(WHITE_WIN_IMG, (400, 400))
+WHITE_WIN_IMG = pygame.transform.scale(WHITE_WIN_IMG, (800, 800))
 WHITE_WIN_rect = WHITE_WIN_IMG.get_rect(center=(WIDTH // 2, HEIGHT // 2))
 
 RED_WIN_IMG = pygame.image.load('assets/red_win.png')
-RED_WIN_IMG = pygame.transform.scale(RED_WIN_IMG, (400, 400))
+RED_WIN_IMG = pygame.transform.scale(RED_WIN_IMG, (800, 800))
 RED_WIN_rect = RED_WIN_IMG.get_rect(center=(WIDTH // 2, HEIGHT // 2))
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))  # ขนาดgame window
