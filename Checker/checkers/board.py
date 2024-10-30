@@ -2,6 +2,7 @@
 import pygame
 from .constants import BLACK, ROWS, RED, SQUARE_SIZE, COLS, WHITE
 from .piece import Piece
+import time
 
 class Board:
     def __init__(self):
@@ -63,12 +64,21 @@ class Board:
 
     def winner(self):
         if self.red_left <= 0:
-            return WHITE
+            self.show_win_image("assets/white_win.png")  # Show "White Wins"
+            return self.WHITE
         elif self.white_left <= 0:
-            return RED
-        
+            self.show_win_image("assets/red_win.png")  # Show "Red Wins"
+            return self.RED
         return None
-    
+
+    def show_win_image(self, image_path):
+        image = pygame.image.load(image_path)
+        self.screen.blit(image, (0, 0))
+        pygame.display.flip()
+        time.sleep(5)                          # Display for 5 seconds
+        self.screen.fill((0, 0, 0))            # Clear the screen after display
+        pygame.display.flip()
+
     def get_valid_moves(self, piece):# กำหนด dictionary สำหรับเก็บตำแหน่งการเดินที่ถูกต้องทั้งหมดของตัวหมาก
         moves = {}
         left = piece.col - 1
