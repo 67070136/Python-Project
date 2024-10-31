@@ -30,11 +30,6 @@ title_font = pygame.font.Font(None, 64)  # Font size for title
 title_text = title_font.render("Checkers Game", True, (0, 0, 0))  # Black title text
 title_rect = title_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 100))  # Position above the button
 
-#SFX 
-Red_win_sfx = pygame.mixer.Sound('assets/Red wins.mp3') 
-White_win_sfx = pygame.mixer.Sound('assets/White wins.mp3')
-click_sound = pygame.mixer.Sound("assets/Pieces move.mp3")
-
 def get_row_col_from_mouse(pos):
     x, y = pos
     row = y // SQUARE_SIZE
@@ -75,10 +70,8 @@ def main():
         if winner is not None:
             if winner == "WHITE":  # Check against string identifiers
                 WIN.blit(WHITE_WIN_IMG, WHITE_WIN_rect)
-                White_win_sfx.play()
             elif winner == "RED":  # Check against string identifiers
                 WIN.blit(RED_WIN_IMG, RED_WIN_rect)
-                Red_win_sfx.play()
             print(winner)
             
             pygame.display.update()
@@ -95,7 +88,6 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                click_sound.play()
                 pos = pygame.mouse.get_pos()
                 row, col = get_row_col_from_mouse(pos)
                 game.select(row, col)
