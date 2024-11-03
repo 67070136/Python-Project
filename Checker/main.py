@@ -38,7 +38,7 @@ title_rect = title_text.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 100))  # Posi
 #SFX 
 Red_win_sfx = pygame.mixer.Sound('assets/Red wins.mp3') 
 White_win_sfx = pygame.mixer.Sound('assets/White wins.mp3')
-click_sound = pygame.mixer.Sound("assets/Pieces move.mp3")
+click_sound = pygame.mixer.Sound("assets/Click.mp3")
 
 def get_row_col_from_mouse(pos):
     x, y = pos
