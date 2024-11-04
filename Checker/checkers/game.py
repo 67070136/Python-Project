@@ -30,13 +30,13 @@ class Game:#  อันนี้เอาไว้ใช้แทนตัวข
             if not result:# ถ้าไม่สามารถเดินได้ ยกเลิกการเลือกหมาก และเรียก select() ใหม่
                 self.selected = None
                 self.select(row, col)
-        
+
         piece = self.board.get_piece(row, col)
         if piece != 0 and piece.color == self.turn:
             self.selected = piece
             self.valid_moves = self.board.get_valid_moves(piece)
-            return True    
-        
+            return True   
+
         return False
 
     def _move(self, row, col):# ใช้สำหรับการเดินหมากไปยังตำแหน่ง (row, col)
@@ -49,9 +49,9 @@ class Game:#  อันนี้เอาไว้ใช้แทนตัวข
             self.change_turn()
         else:
             return False
-        
+
         return True
-    
+
     def draw_valid_moves(self, moves):
         for move in moves:
             row, col = move

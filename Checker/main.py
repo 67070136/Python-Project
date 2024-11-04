@@ -1,6 +1,6 @@
 """mainในการเชื่อมcodeเข้าหากัน"""
 import pygame
-from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE, RED
+from checkers.constants import WIDTH, HEIGHT, SQUARE_SIZE
 from checkers.game import Game
 
 pygame.init()

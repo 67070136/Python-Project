@@ -68,7 +68,7 @@ class Board:
             return "RED"
 
         return None
-    
+
     def get_valid_moves(self, piece):# กำหนด dictionary สำหรับเก็บตำแหน่งการเดินที่ถูกต้องทั้งหมดของตัวหมาก
         moves = {}
         left = piece.col - 1
@@ -81,9 +81,9 @@ class Board:
         if piece.color == WHITE or piece.king:# ตรวจสอบว่าตัวหมากเป็นสีขาวหรือเป็นตัวคิง
             moves.update(self._traverse_left(row +1, min(row+3, ROWS), 1, piece.color, left))
             moves.update(self._traverse_right(row +1, min(row+3, ROWS), 1, piece.color, right))
-    
+
         return moves
-    
+
     def _traverse_left(self, start, stop, step, color, left, skipped=[]):# กำหนด dictionary สำหรับเก็บตำแหน่งที่สามารถเดินได้ในทิศทางซ้าย
         moves = {} # กำหนด dictionary สำหรับเก็บตำแหน่งที่สามารถเดินได้ในทิศทางซ้าย
         last = []# สร้าง list สำหรับเก็บหมากที่อาจจะถูกข้าม (หรือถูกกิน)
@@ -117,7 +117,7 @@ class Board:
             left -= 1
 
         return moves
-    
+
     def _traverse_right(self, start, stop, step, color, right, skipped=[]):# ตำแหน่งนี้สำหรับเขียนโค้ดการหาทางเดินในทิศทางขวา
         moves = {} # กำหนด dictionary สำหรับเก็บตำแหน่งที่สามารถเดินได้ในทิศทางขวา
         last = []# สร้าง list สำหรับเก็บหมากที่อาจจะถูกข้าม (หรือถูกกิน)
